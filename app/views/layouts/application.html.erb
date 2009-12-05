@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><%= h(yield(:title) || "Fiquei Afim") %></title>
+    <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag :all %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div id="container">
+      <div id="user_nav">
+        <% if current_user %>
+          <% if current_user.profile %>
+            <%= link_to current_user.profile.first_name, edit_user_path(current_user.username) %> |
+          <% else %>
+            <%= link_to 'Editar perfil', user_profile_path(current_user) %>
+          <% end %>
+          <%= link_to 'Sair', logout_path %>
+        <% else %>
+          <%= link_to "Registro", new_user_path %> |
+          <%= link_to "Entrar", login_path %>
+        <% end %>
+      </div>
+      <% if current_user %>
+        <div id="menu-nav">
+          <ul>
+            <li><%= link_to 'Início', root_path%></li>
+            <li><%= link_to 'Perfil', user_profile_path(current_user.id) %></li>
+            <li><%= link_to "Fiquei Afim", meetings_path %></li>
+            <li>Ajuda</li>
+            
+          </ul>
+        </div>
+      <% end %>
+
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <%- end -%>
+
+      <%- if show_title? -%>
+        <h1><%=h yield(:title) %></h1>
+      <%- end -%>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

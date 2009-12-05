@@ -1,0 +1,65 @@
+<% title "Fiquei afim" %>
+
+<% form_for @meeting do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <label>Onde?</label> <br />
+    <%= collection_select(:category, :id,  PlaceCategory.all,  :id, :description,{:prompt   => "Selecione"},
+      :onchange => "#{remote_function(:url  => {:controller => 'categories',:action => "update_places"}, :with => "'category_id='+value")}") %>
+
+  </p>
+
+  <div id="places"><select><option>Selecione uma categoria</option></select> </div><span><%= link_to 'ou cadastre uma.','#' %></span>
+
+  <p>
+    <label>Quando?</label> <br />
+    <%= f.date_select(:meet_date,:order => [:day,:month,:year]) %>
+  </p>
+
+  <p>
+    <label>Interlavo?</label> <br />
+    de:<%= f.time_select :initial_hour, :minute_step => 15 %>a
+    <%= f.time_select :final_hour,:minute_step => 15 %>
+  </p>
+
+  <fieldset>
+      <legend>Como voçê estava vestido(a)?</legend>
+      <div>
+        <p>
+          <label>Roupa de Cima</label>
+          <span><%= f.collection_select(:my_top_clothing_type_id, ClothingType.all,:id,:description) %></span>
+          <span>Cor:<%= f.text_field(:my_top_color)  %></span>
+        </p>
+
+        <p>
+          <label>Roupa de Baixo</label>
+          <span><%= f.collection_select(:my_bottom_clothing_type_id, ClothingType.all,:id,:description) %></span>
+          <span>Cor:<%= f.text_field(:my_bottom_color)  %></span>
+        </p>
+      </div>
+
+  </fieldset>
+
+    <fieldset>
+      <legend>Como ele(a) estava vestido(a)?</legend>
+      <div>
+        <p>
+          <label>Roupa de Cima</label>
+          <span><%= f.collection_select(:other_top_clothing_type_id, ClothingType.all,:id,:description) %></span>
+          <span>Cor:<%= f.text_field(:other_top_color)  %></span>
+        </p>
+
+        <p>
+          <label>Roupa de Baixo</label>
+          <span><%= f.collection_select(:other_bottom_clothing_type_id, ClothingType.all,:id,:description) %></span>
+          <span>Cor:<%= f.text_field(:other_bottom_color)  %></span>
+        </p>
+      </div>
+
+  </fieldset>
+
+  <p><%= f.submit "Salvar" %></p>
+
+
+<% end %>
+

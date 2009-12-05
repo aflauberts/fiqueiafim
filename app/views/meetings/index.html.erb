@@ -1,0 +1,29 @@
+<% if !@meetings %>
+  <p>Você ainda não cadastrou nenhum encontro</p>
+<% else %>
+  <table>
+    <tr>
+      <th>Onde</th>
+      <th>Data</th>
+      <th></th>
+
+    </tr>
+
+    <% for meeting in @meetings %>
+      <tr>
+        <td><%= meeting.place.description if meeting.place %></td>
+        <td><%= meeting.meet_date %></td>
+        <td><%= link_to 'edit', edit_meeting_path(meeting) %>
+      </tr>
+
+    <% end %>
+  </table>
+  <span>descrição do encontro e se foi ou nao obtido sucesso</span>
+<% end %>
+
+<div class="new_meeting">
+  <%= link_to "novo encontro", new_meeting_path %>
+</div>
+
+
+

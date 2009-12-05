@@ -1,0 +1,14 @@
+<% title "Clothing_type" %>
+
+<p>
+  <strong>Description:</strong>
+  <%=h @clothing_type.description %>
+</p>
+
+<%= image_tag @clothing_type.imagem.url(:normal) %>
+
+<p>
+  <%= link_to "Edit", edit_clothing_type_path(@clothing_type) %> |
+  <%= link_to "Destroy", @clothing_type, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", clothing_types_path %>
+</p>

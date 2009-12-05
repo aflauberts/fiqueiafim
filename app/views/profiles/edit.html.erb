@@ -1,0 +1,6 @@
+<% title "Edit profile" %>
+
+<% form_for @profile, :url => user_profile_path(@profile), :html => {:method => 'put'} do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => 'form', :locals => {:f => f }%>
+<% end %>

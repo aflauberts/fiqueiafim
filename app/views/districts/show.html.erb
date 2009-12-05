@@ -1,0 +1,16 @@
+<% title "District" %>
+
+<p>
+  <strong>City:</strong>
+  <%=h @district.city %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%=h @district.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_district_path(@district) %> |
+  <%= link_to "Destroy", @district, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", districts_path %>
+</p>

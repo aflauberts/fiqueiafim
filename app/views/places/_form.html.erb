@@ -1,0 +1,30 @@
+<% form_for @place do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+
+  <p>
+    <%= f.label :categorias %><br />
+    <div id="check-categorias">
+      <% for category in PlaceCategory.all %>
+        <%= check_box_tag "place[category_ids][]", category.id, @place.categories.include?(category) %>
+        <%= category.description %>
+      <% end %>
+    </div>
+  </p>
+
+  <p>
+    <%= f.label :district %><br />
+    <%= f.text_field :district_id %>
+  </p>
+
+  <p>
+    <%= f.label 'Palavras chaves' %><br />
+    <%= f.text_area :tags, :cols => '30', :rows => '3' %>
+  </p>
+
+
+  <p><%= f.submit "Submit" %></p>
+<% end %>

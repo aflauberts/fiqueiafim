@@ -1,0 +1,13 @@
+<% form_for @clothing_type, :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+
+  <p>
+    <%= f.label :imagem %><br />
+    <%= f.file_field :imagem%>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

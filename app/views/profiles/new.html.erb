@@ -1,0 +1,6 @@
+<% title "Create profile" %>
+
+
+<% form_for @profile, :url => {:action => 'create'} do |f| %>
+<%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>

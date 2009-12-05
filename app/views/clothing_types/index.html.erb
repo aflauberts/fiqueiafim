@@ -1,0 +1,17 @@
+<% title "Clothing_types" %>
+
+<table>
+  <tr>
+    <th>Description</th>
+  </tr>
+  <% for clothing_type in @clothing_types %>
+    <tr>
+      <td><%=h clothing_type.description %></td>
+      <td><%= link_to "Show", clothing_type %></td>
+      <td><%= link_to "Edit", edit_clothing_type_path(clothing_type) %></td>
+      <td><%= link_to "Destroy", clothing_type, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Clothing_type", new_clothing_type_path %></p>

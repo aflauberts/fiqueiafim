@@ -1,0 +1,19 @@
+<% title "Districts" %>
+
+<table>
+  <tr>
+    <th>City</th>
+    <th>Name</th>
+  </tr>
+  <% for district in @districts %>
+    <tr>
+      <td><%=h district.city %></td>
+      <td><%=h district.name %></td>
+      <td><%= link_to "Show", district %></td>
+      <td><%= link_to "Edit", edit_district_path(district) %></td>
+      <td><%= link_to "Destroy", district, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New District", new_district_path %></p>

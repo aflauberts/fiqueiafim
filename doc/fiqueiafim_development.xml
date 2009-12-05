@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Db flnm="fiqueiafim_development" nm="fiqueiafim_development" ver="1.3.4">
+  <VerLbl/>
+  <VerNotes/>
+  <DefTblOpts/>
+  <DocFolder>/home/flaubert/Desktop</DocFolder>
+  <Sch Cm="standard public schema" nm="public">
+    <Tbl UsSo="1" nm="categories">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkcategories"/>
+      <Cl au="1" df="nextval('place_types_id_seq'::regclass)" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="categories_places">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkcategories_places"/>
+      <Cl au="0" df="" nm="place_id" nu="1">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="category_id" nu="1">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_place_categories_places_place_categories" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="categories" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="categories_places" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="category_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_place_categories_places_places" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="places" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="categories_places" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="place_id" prCl="id"/>
+      </Fk>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="cities">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="cities_pkey"/>
+      <Cl au="1" df="nextval('cities_id_seq'::regclass)" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="state_id" nu="1">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Fk deAc="0" nm="fk_cities_states" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="states" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="cities" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="state_id" prCl="id"/>
+      </Fk>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="clothing_types">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkclothing_types"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="50" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="imagem_file_name" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="200" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="imagem_content_stype" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="40" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="imagem_file_size" nu="1">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="imagem_updated_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="meetings">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkmeetings"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="initial_hour" nu="0">
+        <DT ds="Time" en="" id="92" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="final_hour" nu="0">
+        <DT ds="Time" en="" id="92" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="place_id" nu="1">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="meet_date" nu="0">
+        <DT ds="Date" en="" id="91" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="0">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="my_top_clothing_type_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="other_top_clothing_type_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="my_bottom_clothing_type_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="other_bottom_clothing_type_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="my_top_color" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="7" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="other_top_color" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="7" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="my_bottom_color" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="7" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="other_bottom_color" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="7" sc="null" sg="1"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_meetings_my_bottom_clothing_types" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="clothing_types" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="meetings" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="my_bottom_clothing_type_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_meetings_my_top_clothing_types" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="clothing_types" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="meetings" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="my_top_clothing_type_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_meetings_other_bottom_clothing_types" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="clothing_types" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="meetings" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="other_bottom_clothing_type_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_meetings_other_top_clothing_types" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="clothing_types" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="meetings" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="other_top_clothing_type_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_meetings_places" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="places" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="meetings" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="place_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_meetings_users" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="users" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="meetings" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="user_id" prCl="id"/>
+      </Fk>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="places">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="places_pkey"/>
+      <Cl au="1" df="nextval('places_id_seq'::regclass)" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="100" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="tags" nu="1">
+        <DT ds="Text" en="" id="703" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="city_id" nu="1">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_places_cities" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="cities" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="places" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="city_id" prCl="id"/>
+      </Fk>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="profiles">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="profiles_pkey"/>
+      <Cl au="1" df="nextval('profiles_id_seq'::regclass)" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_id" nu="1">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="first_name" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="30" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="last_name" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="30" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="sex" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="1" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="orientation" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="visible_fields" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="300" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_profiles_users" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="users" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="profiles" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="user_id" prCl="id"/>
+      </Fk>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="states">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="states_pkey"/>
+      <Cl au="1" df="nextval('states_id_seq'::regclass)" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="100" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="uf" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="2" sc="null" sg="1"/>
+      </Cl>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="users">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="users_pkey"/>
+      <Cl au="1" df="nextval('users_id_seq'::regclass)" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="username" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="email" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="crypted_password" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="password_salt" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="persistence_token" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="last_login_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="login_count" nu="1">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <SchTrHis/>
+    </Tbl>
+    <Seq incr="1" nm="categories_cities_id_seq"/>
+    <Seq incr="1" nm="cities_id_seq"/>
+    <Seq incr="1" nm="clothing_id_seq"/>
+    <Seq incr="1" nm="clothing_types_id_seq"/>
+    <Seq incr="1" nm="meetings_id_seq"/>
+    <Seq incr="1" nm="place_categories_places_id_seq"/>
+    <Seq incr="1" nm="place_types_id_seq"/>
+    <Seq incr="1" nm="places_id_seq"/>
+    <Seq incr="1" nm="profiles_id_seq"/>
+    <Seq incr="1" nm="states_id_seq"/>
+    <Seq incr="1" nm="users_id_seq"/>
+  </Sch>
+  <Dgm nm="diagramA">
+    <RnCf FtSz="9" lkStgy="OffsetDirect" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="cities" x="78" y="278"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="categories_places" x="246" y="165"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="categories" x="251" y="18"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="places" x="364" y="278"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="profiles" x="830" y="285"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="states" x="72" y="119"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="users" x="559" y="278"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="meetings" x="499" y="40"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="clothing_types" x="822" y="105"/>
+    <FkGl bkCl="ff000000" nm="public.categories_places.fk_place_categories_places_place_categories"/>
+    <FkGl bkCl="ff000000" nm="public.categories_places.fk_place_categories_places_places"/>
+    <FkGl bkCl="ff000000" nm="public.cities.fk_cities_states"/>
+    <FkGl bkCl="ff000000" nm="public.meetings.fk_meetings_my_bottom_clothing_types"/>
+    <FkGl bkCl="ff000000" nm="public.meetings.fk_meetings_my_top_clothing_types"/>
+    <FkGl bkCl="ff000000" nm="public.meetings.fk_meetings_other_bottom_clothing_types"/>
+    <FkGl bkCl="ff000000" nm="public.meetings.fk_meetings_other_top_clothing_types"/>
+    <FkGl bkCl="ff000000" nm="public.meetings.fk_meetings_places"/>
+    <FkGl bkCl="ff000000" nm="public.meetings.fk_meetings_users"/>
+    <FkGl bkCl="ff000000" nm="public.places.fk_places_cities"/>
+    <FkGl bkCl="ff000000" nm="public.profiles.fk_profiles_users"/>
+  </Dgm>
+  <RnmMgr NxRnmId="20">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="16" nNm="categories" oNm="place_categories"/>
+      <Rnm id="1" nNm="place_categories" oNm="place_types"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="meetings" SupCls="Schema" SupNme="public">
+      <Rnm id="2" nNm="meet_date" oNm="date"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="10" nNm="clothing" oNm="clothes"/>
+      <Rnm id="4" nNm="clothes" oNm="clothing"/>
+      <Rnm id="3" nNm="clothing" oNm="clothes"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="clothing_types" SupCls="Schema" SupNme="public">
+      <Rnm id="11" nNm="imagem_file_name" oNm="image_file_name"/>
+      <Rnm id="7" nNm="image_file_name" oNm="image_path"/>
+      <Rnm id="5" nNm="image_path" oNm="image"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="clothing" SupCls="Schema" SupNme="public">
+      <Rnm id="6" nNm="top_clothing_type_id" oNm="clothing_type_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="meetings" SupCls="Schema" SupNme="public">
+      <Rnm id="8" nNm="my_clothing_id" oNm="clothing_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="meetings" SupCls="Schema" SupNme="public">
+      <Rnm id="9" nNm="other_top_clothing_type_id" oNm="other_clothing_type_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="clothing_types" SupCls="Schema" SupNme="public">
+      <Rnm id="12" nNm="imagem_content_stype" oNm="image_content_stype"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="clothing_types" SupCls="Schema" SupNme="public">
+      <Rnm id="13" nNm="imagem_file_size" oNm="image_file_size"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="clothing_types" SupCls="Schema" SupNme="public">
+      <Rnm id="14" nNm="imagem_updated_at" oNm="image_updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="places" SupCls="Schema" SupNme="public">
+      <Rnm id="15" nNm="city_id" oNm="district_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="17" nNm="categories_places" oNm="place_categories_places"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="places" SupCls="Schema" SupNme="public">
+      <Rnm id="18" nNm="city_id" oNm="citiesid"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="categories_places" SupCls="Schema" SupNme="public">
+      <Rnm id="19" nNm="category_id" oNm="place_category_id"/>
+    </RnmCh>
+  </RnmMgr>
+  <DbDocOptionMgr>
+    <BasicOptionMgr>
+      <Name>db.doc.option.mgr</Name>
+      <BoolOpt lbl="Diagrams" nm="doc.diagrams" on="1" spl="0"/>
+      <BoolOpt lbl="Foreign Keys" nm="doc.fks" on="1" spl="0"/>
+      <BoolOpt lbl="Indexes" nm="doc.indexes" on="1" spl="0"/>
+      <BoolOpt lbl="Overwrite CSS File" nm="doc.overwrite.css" on="1" spl="0"/>
+      <BoolOpt lbl="Procedures" nm="doc.procs" on="1" spl="0"/>
+      <BoolOpt lbl="Schemas" nm="doc.schemas" on="1" spl="0"/>
+      <BoolOpt lbl="Sequences" nm="doc.sequences" on="1" spl="0"/>
+      <BoolOpt lbl="Tables" nm="doc.tables" on="1" spl="0"/>
+      <BoolOpt lbl="Triggers" nm="doc.triggers" on="1" spl="0"/>
+      <BoolOpt lbl="Views" nm="doc.views" on="1" spl="0"/>
+    </BasicOptionMgr>
+  </DbDocOptionMgr>
+</Db>
